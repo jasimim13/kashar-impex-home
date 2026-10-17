@@ -1728,42 +1728,6 @@ legend.field__label {
   outline-offset: 2px;
 }
 
-.hp {
-  position: absolute;
-  left: -10000px;
-  width: 1px;
-  height: 1px;
-  overflow: hidden;
-}
-
-.form-alert {
-  overflow: hidden;
-}
-
-.form-alert p {
-  padding: 14px 16px 0;
-  border-radius: 14px 14px 0 0;
-  background: rgba(196, 0, 26, 0.08);
-  color: var(--error);
-  font-size: 0.9375rem;
-}
-
-.form-alert a {
-  display: block;
-  padding: 6px 16px 14px;
-  border-radius: 0 0 14px 14px;
-  background: rgba(196, 0, 26, 0.08);
-  color: var(--ink);
-  font-weight: 600;
-  font-size: 0.9375rem;
-  text-decoration: underline;
-}
-
-.form-alert p:last-child {
-  padding-bottom: 14px;
-  border-radius: 14px;
-}
-
 .form__footer {
   display: grid;
   gap: 12px;
@@ -1779,62 +1743,6 @@ legend.field__label {
 .form__note {
   font-size: 0.875rem;
   color: var(--ink-2);
-}
-
-.spinner {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.35);
-  border-top-color: #fff;
-  animation: spin 700ms linear infinite;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.form-done {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-  padding: clamp(24px, 6vw, 64px) 8px;
-  text-align: center;
-}
-
-.form-done__badge {
-  display: grid;
-  place-items: center;
-  width: 60px;
-  height: 60px;
-  margin-bottom: 4px;
-  border-radius: 50%;
-  background: var(--brand);
-  color: #fff;
-}
-
-.form-done__badge svg {
-  width: 28px;
-  height: 28px;
-}
-
-.form-done h3 {
-  font-family: var(--font-display);
-  font-size: 1.75rem;
-  letter-spacing: -0.025em;
-  font-weight: 700;
-}
-
-.form-done p {
-  max-width: 26em;
-  color: var(--ink-2);
-}
-
-.form-done .btn {
-  margin-top: 8px;
 }
 
 /* ─── Location ─────────────────────────────────────────── */
@@ -2248,9 +2156,6 @@ legend.field__label {
     opacity: 0.8;
   }
 
-  .spinner {
-    animation-duration: 1.6s;
-  }
 
   .compare--pressed .compare__knob {
     transform: none;

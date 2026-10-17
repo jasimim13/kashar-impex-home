@@ -7,13 +7,16 @@ export const business = {
   // Second line for calls.
   secondPhoneDisplay: "0300 8616788",
   secondPhoneHref: "tel:+923008616788",
+  // Office landline, calls only.
+  landlineDisplay: "052-4267888",
+  landlineHref: "tel:+92524267888",
   email: "Kashar_impex@yahoo.com",
 };
 
 // Office location. Write the address as people should read it; line breaks are kept. mapQuery is what
 // Google Maps searches for: shop and floor numbers confuse it, so it names the plaza and road only.
 export const office = {
-  address: "Shop No. 14–15, First Floor\nCantonment Plaza No. 2\nJamia Masjid Road, Sialkot Cantt",
+  address: "Shop No. 14–15, First Floor\nCantonment Plaza\nJamia Masjid Road, Sialkot Cantt",
   mapQuery: "Cantonment Plaza, Jamia Masjid Road, Sialkot Cantt",
 };
 

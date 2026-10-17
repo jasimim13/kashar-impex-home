@@ -21,8 +21,17 @@ project settings). Set `NEXT_PUBLIC_SITE_URL` to the live address so link previe
 
 ## WhatsApp delivery
 
-The form posts to `/api/contact`, which validates the enquiry and sends it to WhatsApp. Pick one option in
-`.env.local`:
+The contact form opens WhatsApp on the visitor's phone with the enquiry already written, addressed to the
+business number. The visitor only presses send. No setup is needed.
+
+To test with another number, set `NEXT_PUBLIC_ENQUIRY_WHATSAPP` in `.env.local` (international format, no
+`+`). The numbers shown on the page don't change.
+
+### Optional: automatic delivery (not used by the form now)
+
+`/api/contact` can deliver enquiries without the visitor pressing send, through CallMeBot or the Meta
+WhatsApp Cloud API. The form doesn't call it at the moment. To use it again, the form's submit handler
+would post to `/api/contact` instead of opening WhatsApp. The setup notes are below.
 
 ### Option A: CallMeBot (free, simplest)
 
@@ -52,14 +61,6 @@ WHATSAPP_TO=923321788788
 WHATSAPP_TEMPLATE=new_enquiry
 WHATSAPP_TEMPLATE_LANG=en
 ```
-
-### No setup
-
-If `WHATSAPP_PROVIDER` is empty, the visitor sees **Send on WhatsApp**, which opens WhatsApp with their
-enquiry already written. If a provider is set but sending fails, the visitor gets the same button, so no
-enquiry is lost.
-
-The route also has a hidden honeypot field for bots and allows 5 enquiries per 10 minutes per connection.
 
 ## Editing content
 

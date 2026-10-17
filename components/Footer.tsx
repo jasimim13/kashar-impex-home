@@ -30,6 +30,15 @@ export default function Footer() {
             </a>
           </li>
           <li>
+            <a href={business.landlineHref}>
+              <PhoneIcon className="footer__icon" />
+              <span>
+                <strong>{business.landlineDisplay}</strong>
+                <small>Landline</small>
+              </span>
+            </a>
+          </li>
+          <li>
             <a href={`mailto:${business.email}`}>
               <MailIcon className="footer__icon" />
               <span>

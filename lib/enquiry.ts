@@ -86,7 +86,8 @@ function enquiryLines(e: Enquiry): [string, string][] {
 /** Multi-line message for WhatsApp text messages. */
 export function formatEnquiry(e: Enquiry): string {
   return [
-    `New enquiry from the ${business.name} website`,
+    // Sent from the visitor's own WhatsApp, so it reads as their message.
+    `Hello ${business.name}, I found you on your website.`,
     "",
     ...enquiryLines(e).map(([k, v]) => `*${k}:* ${v}`),
   ].join("\n");

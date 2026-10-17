@@ -9,7 +9,8 @@ Claude Code loads it automatically, so keep it up to date as decisions change.
   photos are from Sialkot.
 - **Main number, calls and WhatsApp:** 0332 1788788 (international form: 923321788788). Enquiries are
   delivered to this WhatsApp.
-- **Second line, calls:** 0300 8616788 (923008616788). Shown in the contact list and footer.
+- **Second line, calls only (no WhatsApp):** 0300 8616788 (923008616788). Shown in the contact list and footer.
+- **Landline:** 052-4267888 (+92 52 4267888). Shown in the contact list and footer.
 - **Email:** Kashar_impex@yahoo.com
 - **Slogan:** "You have a problem? We have a solution." It is the hero headline.
 - **Colours:** the flyer used burgundy `#6B1530` and gold `#B8862B`. The site now uses deep teal `#0F6B64`
@@ -49,7 +50,7 @@ Claude Code loads it automatically, so keep it up to date as decisions change.
 app/layout.tsx            metadata, viewport, theme colours
 app/page.tsx              section order
 app/globals.css           every style (tokens, components, responsive, accessibility queries)
-app/api/contact/route.ts  POST endpoint: validate, honeypot, rate limit, send to WhatsApp
+app/api/contact/route.ts  POST endpoint (unused by the form now): validate, honeypot, rate limit, send to WhatsApp
 components/Nav.tsx           translucent nav, active-section pill, theme toggle, mobile menu sheet
 components/ThemeToggle.tsx   light/dark switch; the new theme grows from the button (View Transitions)
 components/Hero.tsx          big logo, slogan, blueprint background, stats, and the BeforeAfter reveal of the stage
@@ -77,14 +78,13 @@ Contact → Location → Footer.
 
 ## How the contact form reaches WhatsApp
 
-The env var `WHATSAPP_PROVIDER` decides the route (see `.env.example` and `README.md`):
+The form opens WhatsApp directly from the submit tap, with the enquiry already written
+(`formatEnquiry` in `lib/enquiry.ts`); the visitor only presses send. There is no confirmation screen.
+The window is opened synchronously inside the submit handler so browsers don't block it as a pop-up; if
+a new tab is blocked anyway, the current tab navigates to WhatsApp.
 
-- **`callmebot`:** free; sends to the owner's own WhatsApp. This is the recommended option.
-- **`cloud`:** Meta WhatsApp Cloud API. Business-initiated messages need an approved template with one
-  `{{1}}` variable, which receives the single-line form of the enquiry.
-- **Empty or not configured:** the API returns `fallbackUrl`, a wa.me link with the enquiry already
-  written, and the client shows a "Send on WhatsApp" button.
-- **Provider fails:** the API returns 502 with the same fallback link, so no enquiry is lost.
+`app/api/contact/route.ts` and `lib/whatsapp.ts` (CallMeBot or Meta Cloud API delivery) are no longer
+called by the form. They remain in case automatic delivery is wanted later; see `README.md`.
 
 ## Photos (`public/images/`)
 
@@ -121,11 +121,10 @@ The env var `WHATSAPP_PROVIDER` decides the route (see `.env.example` and `READM
   are required. Work type is four big buttons, and the note is optional. Fields and text are large.
 - **Testing:** set `NEXT_PUBLIC_ENQUIRY_WHATSAPP` in `.env.local` to send form enquiries to another
   WhatsApp number without changing the numbers on the page. It is empty now, so enquiries go to 0332 1788788.
-- The rate limit (5 per 10 minutes per IP) is off in development.
 
 ## Open items
 
-- Office: Shop No. 14–15, First Floor, Cantonment Plaza No. 2, Jamia Masjid Road, Sialkot Cantt. The map
+- Office: Shop No. 14–15, First Floor, Cantonment Plaza, Jamia Masjid Road, Sialkot Cantt. The map
   searches "Cantonment Plaza, Jamia Masjid Road, Sialkot Cantt" (`office.mapQuery`). The pin has not been
   checked by eye; a dropped-pin link or coordinates from the owner would make it exact.
 
