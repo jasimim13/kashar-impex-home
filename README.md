@@ -5,7 +5,7 @@ Next.js 15 (App Router), TypeScript and Motion. Single page with:
 - **Hero** with a before/after slider of the open-air stage (drag, flick or tap; arrow keys work too)
 - **Recent work** carousel with real project photos, each with its own before/after toggle
 - **On site now** gallery of the house renovation, with photos that zoom out of the grid
-- **Services**, **Two ways to work** (turnkey or labour rate), **Promises**
+- **Services**, **Two ways to work** (lump sum or labour rate), **Promises**
 - **Contact form** that sends the enquiry to WhatsApp
 
 ## Run it

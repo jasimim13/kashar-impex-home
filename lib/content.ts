@@ -174,25 +174,25 @@ export const serviceGroups = [
 
 export const engagements = [
   {
-    id: "turnkey",
-    label: "Turnkey",
-    title: "Turnkey contract",
+    id: "lumpsum",
+    label: "Lump sum",
+    title: "Lump sum contract",
     description:
-      "Hand us the whole job. We prepare the plans, source the materials, run every trade and hand the building back ready to use.",
+      "One fixed price for the whole job. We make the plans, buy the materials, run every trade and hand the building over ready to use.",
     points: [
       "Plans, drawings and 2D or 3D views",
       "Materials sourced and checked by our team",
       "Every trade scheduled and supervised",
       "One team accountable from start to handover",
     ],
-    cta: "Ask for a turnkey quote",
+    cta: "Ask for a lump sum price",
   },
   {
     id: "labour",
     label: "Labour rate",
     title: "Labour-rate contract",
     description:
-      "Keep control of materials and spending. We bring skilled teams and engineering supervision, and you pay for the work done.",
+      "You buy the materials. We bring skilled workers and engineers, and you pay for the work done at agreed rates.",
     points: [
       "You choose and buy the materials",
       "Our engineers and skilled trades on site",

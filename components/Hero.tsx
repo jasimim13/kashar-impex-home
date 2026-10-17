@@ -5,13 +5,14 @@ import type { PointerEvent as ReactPointerEvent } from "react";
 import { animate, motion, useMotionValue, useReducedMotion, useSpring, useTransform } from "motion/react";
 import { business, heroCompare, projectTypes, serviceGroups, whatsappLink } from "@/lib/content";
 import BeforeAfter from "./BeforeAfter";
+import Logo from "./Logo";
 import { CheckIcon, PhoneIcon, WhatsAppIcon } from "./Icons";
 
 const spring = { type: "spring", bounce: 0, visualDuration: 0.6 } as const;
 
 // One orchestrated load, told as the slogan: the problem (the "before" photo), then the solution
 // (the divider sweeps to "after"), then everything you can do about it. Times are in seconds.
-const T = { problem: 0.1, solution: 0.95, sweep: 1.15, rest: 1.55, done: 2.4 };
+const T = { logo: 0, problem: 0.3, solution: 1.1, sweep: 1.3, rest: 1.7, done: 2.55 };
 
 const serviceCount = serviceGroups.reduce((n, g) => n + g.items.length, 0);
 
@@ -168,18 +169,16 @@ export default function Hero() {
 
       <div className="hero__inner">
         <div className="hero__copy">
-          <motion.p className="hero__eyebrow" {...rise(0)}>
-            <span className="hero__eyebrow-dot" aria-hidden="true" />
-            Construction and renovation
-          </motion.p>
+          <motion.div id="hero-logo" className="hero__logo" {...appear(T.logo)}>
+            <Logo className="logo--hero" />
+          </motion.div>
           <h1 className="display hero__title">
             <Line words={lineOne} start={T.problem} reduce={reduce} />
             <Line words={lineTwo} start={T.solution} reduce={reduce} />
           </h1>
           <motion.p className="hero__lede" {...rise(T.rest)}>
-            From the first drawing to the final coat of paint, {business.name} plans, builds and finishes
-            homes, bank branches, brand outlets, industrial buildings and multistory projects, on turnkey or
-            labour-rate contracts.
+            {business.name} plans, builds and finishes homes, bank branches, brand outlets, industrial
+            buildings and multistory projects, on lump sum or labour rate contracts.
           </motion.p>
           <motion.div className="hero__actions" {...rise(T.rest + 0.1)}>
             <a className="btn btn--primary" href="#contact">
@@ -237,7 +236,7 @@ export default function Hero() {
             </motion.div>
             <motion.div className="hero__chip hero__chip--terms" aria-hidden="true" {...appear(T.done + 0.15)}>
               <span className="hero__chip-dot" />
-              Turnkey or labour rate
+              Lump sum or labour rate
             </motion.div>
           </div>
           <figcaption>

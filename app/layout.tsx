@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: "Kashar Home Solutions | Construction and renovation",
   description:
-    "Construction and renovation for homes, bank branches, brand outlets, industrial buildings and multistory projects. Turnkey or labour-rate contracts. Call or WhatsApp 0332 1788788.",
+    "Construction and renovation for homes, bank branches, brand outlets, industrial buildings and multistory projects. Lump sum or labour rate contracts. Call or WhatsApp 0332 1788788.",
   openGraph: {
     title: "Kashar Home Solutions",
     description: "Construction and renovation, from the first drawing to the final coat of paint.",

@@ -21,7 +21,24 @@ export default function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState<string | null>(null);
+  // Hidden while the hero's big logo is in view; starts shown so pages without it still have a brand.
+  const [brandHidden, setBrandHidden] = useState(true);
   const reduce = useReducedMotion();
+
+  useEffect(() => {
+    const heroLogo = document.getElementById("hero-logo");
+    if (!heroLogo) {
+      setBrandHidden(false);
+      return;
+    }
+    const observer = new IntersectionObserver(
+      ([entry]) => setBrandHidden(entry.isIntersecting),
+      // Counts as gone once it slides under the nav bar.
+      { rootMargin: "-56px 0px 0px 0px" },
+    );
+    observer.observe(heroLogo);
+    return () => observer.disconnect();
+  }, []);
 
   // The current section is the last one whose top has passed the middle of the screen. At the very
   // bottom the last link wins, since a short final section never reaches the middle.
@@ -69,7 +86,13 @@ export default function Nav() {
     <header className="nav-wrap">
       <div className={`nav${scrolled ? " nav--scrolled" : ""}`}>
         <div className="nav__inner">
-          <a href="#top" className="nav__brand" aria-label={`${business.name}, back to top`}>
+          <a
+            href="#top"
+            className={`nav__brand${brandHidden && !open ? " nav__brand--hidden" : ""}`}
+            aria-label={`${business.name}, back to top`}
+            aria-hidden={brandHidden && !open ? true : undefined}
+            tabIndex={brandHidden && !open ? -1 : undefined}
+          >
             <Logo />
           </a>
           <nav className="nav__links" aria-label="Main">

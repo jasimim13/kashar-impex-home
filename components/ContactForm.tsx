@@ -157,7 +157,7 @@ export default function ContactForm() {
             <a href={business.secondPhoneHref}>
               <PhoneIcon className="contact__icon" />
               <span>
-                <strong>Second line</strong>
+                <strong>Calls only, no WhatsApp</strong>
                 {business.secondPhoneDisplay}
               </span>
             </a>

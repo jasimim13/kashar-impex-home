@@ -1,8 +1,8 @@
-type Props = { compact?: boolean };
+type Props = { compact?: boolean; className?: string };
 
-export default function Logo({ compact = false }: Props) {
+export default function Logo({ compact = false, className }: Props) {
   return (
-    <span className="logo">
+    <span className={className ? `logo ${className}` : "logo"}>
       <svg className="logo__mark" viewBox="0 0 40 40" aria-hidden="true">
         <path d="M20 4 3 18h5L20 8.2 32 18h5L20 4Z" fill="var(--gold)" />
         <rect x="10" y="17" width="20" height="18" rx="1.5" fill="none" stroke="var(--brand)" strokeWidth="3.4" />

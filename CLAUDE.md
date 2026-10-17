@@ -16,7 +16,8 @@ Claude Code loads it automatically, so keep it up to date as decisions change.
   as the primary and safety amber `#E3A33A` as the accent (`--gold`; use `--gold-ink` when amber is text).
   Teal was chosen over blueprint blue (too generic) and terracotta (too close to the old burgundy).
 - **Project types:** homes, bank branches, brand outlets, industrial buildings, multistory projects.
-- **Contracts offered:** turnkey, or labour rate.
+- **Contracts offered:** lump sum (one fixed price for the whole job; this replaced "turnkey", which
+  clients found confusing) or labour rate (client buys materials, pays for work at agreed rates).
 - **Services:** 19 services in 4 groups. The list lives in `lib/content.ts` under `serviceGroups`.
   "Road repair and paving" was added because the owner's photos show that work.
 
@@ -51,13 +52,14 @@ app/globals.css           every style (tokens, components, responsive, accessibi
 app/api/contact/route.ts  POST endpoint: validate, honeypot, rate limit, send to WhatsApp
 components/Nav.tsx           translucent nav, active-section pill, theme toggle, mobile menu sheet
 components/ThemeToggle.tsx   light/dark switch; the new theme grows from the button (View Transitions)
-components/Hero.tsx          slogan, blueprint background, stats, and the BeforeAfter reveal of the stage
+components/Hero.tsx          big logo, slogan, blueprint background, stats, and the BeforeAfter reveal of the stage
+                             (the nav logo stays hidden while the hero logo, #hero-logo, is in view)
 components/BeforeAfter.tsx   drag, flick or tap slider with rubber-banding; keyboard accessible (role="slider");
                              `introDelay` plays the hero reveal (full before → after → middle)
 components/WorkCarousel.tsx  "Recent work" carousel: momentum projection, rubber-band edges, per-card view toggle
 components/OnSite.tsx        house renovation gallery; lightbox grows from the tile (layoutId), portalled to body
 components/Services.tsx      grouped inset lists
-components/Engagement.tsx    Turnkey / Labour rate segmented control
+components/Engagement.tsx    Lump sum / Labour rate segmented control
 components/Promises.tsx      five promises
 components/ContactForm.tsx   short form (name, mobile, optional work type and note); listens for prefill events
 components/Location.tsx      office address, Google Maps embed and directions (from `office` in lib/content.ts)
