@@ -1,0 +1,142 @@
+# Kashar Home Solutions website: project context
+
+This file carries over the context from the claude.ai chat where this project was designed and built.
+Claude Code loads it automatically, so keep it up to date as decisions change.
+
+## The business
+
+- **Name:** Kashar Home Solutions (the logo reads "Kashar Imp / Home Solutions"), a construction and renovation company in Pakistan. The real project
+  photos are from Sialkot.
+- **Main number, calls and WhatsApp:** 0332 1788788 (international form: 923321788788). Enquiries are
+  delivered to this WhatsApp.
+- **Second line, calls:** 0300 8616788 (923008616788). Shown in the contact list and footer.
+- **Email:** Kashar_impex@yahoo.com
+- **Slogan:** "You have a problem? We have a solution." It is the hero headline.
+- **Colours:** the flyer used burgundy `#6B1530` and gold `#B8862B`. The site now uses deep teal `#0F6B64`
+  as the primary and safety amber `#E3A33A` as the accent (`--gold`; use `--gold-ink` when amber is text).
+  Teal was chosen over blueprint blue (too generic) and terracotta (too close to the old burgundy).
+- **Project types:** homes, bank branches, brand outlets, industrial buildings, multistory projects.
+- **Contracts offered:** turnkey, or labour rate.
+- **Services:** 19 services in 4 groups. The list lives in `lib/content.ts` under `serviceGroups`.
+  "Road repair and paving" was added because the owner's photos show that work.
+
+## History
+
+1. The business started from a flyer for another company ("3J Solutions"). It was rebranded to Kashar,
+   given the new phone and email, recoloured burgundy and gold, and upscaled.
+2. This website was then built in Next.js using the `apple-design` skill: fluid spring motion, direct
+   manipulation, translucent materials, the system font and reduced-motion support.
+3. The owner then supplied 14 real project photos. These replaced every stock or flyer image.
+4. Redesign: light theme by default with an opt-in dark theme, teal and amber palette, and an animated
+   hero built around the slogan.
+
+## Stack
+
+- Next.js 15.5.27 (App Router), React 19.1.9, TypeScript 5.9, `motion` 12.43.0
+- Exact versions are pinned on purpose; update deliberately rather than in passing.
+- Font: Plus Jakarta Sans for everything, self-hosted through `next/font/google` in `app/layout.tsx`
+  (CSS variable `--font-jakarta`). Chosen over Manrope, Onest, Instrument Sans and Bricolage Grotesque.
+  It is wider than the system font, so the hero slogan size is tuned to keep each half on one line.
+- Plain CSS in `app/globals.css`, no Tailwind. Design tokens are CSS variables on `:root`; dark tokens live
+  under `:root[data-theme="dark"]`. The site is light by default and ignores the OS colour scheme.
+  `ThemeToggle` stores the choice in `localStorage` (`kashar-theme`), and an inline script in
+  `app/layout.tsx` applies it before first paint.
+
+## Structure
+
+```
+app/layout.tsx            metadata, viewport, theme colours
+app/page.tsx              section order
+app/globals.css           every style (tokens, components, responsive, accessibility queries)
+app/api/contact/route.ts  POST endpoint: validate, honeypot, rate limit, send to WhatsApp
+components/Nav.tsx           translucent nav, active-section pill, theme toggle, mobile menu sheet
+components/ThemeToggle.tsx   light/dark switch; the new theme grows from the button (View Transitions)
+components/Hero.tsx          slogan, blueprint background, stats, and the BeforeAfter reveal of the stage
+components/BeforeAfter.tsx   drag, flick or tap slider with rubber-banding; keyboard accessible (role="slider");
+                             `introDelay` plays the hero reveal (full before → after → middle)
+components/WorkCarousel.tsx  "Recent work" carousel: momentum projection, rubber-band edges, per-card view toggle
+components/OnSite.tsx        house renovation gallery; lightbox grows from the tile (layoutId), portalled to body
+components/Services.tsx      grouped inset lists
+components/Engagement.tsx    Turnkey / Labour rate segmented control
+components/Promises.tsx      five promises
+components/ContactForm.tsx   short form (name, mobile, optional work type and note); listens for prefill events
+components/Location.tsx      office address, Google Maps embed and directions (from `office` in lib/content.ts)
+components/Footer.tsx, Logo.tsx, Icons.tsx
+lib/content.ts    ALL copy, contact details, services, work items and photos
+lib/enquiry.ts    Enquiry type; validation shared by client and server; message formatting
+lib/whatsapp.ts   providers: CallMeBot, Meta Cloud API, or none
+lib/prefill.ts    prefillEnquiry(): adds a suggested note to the form from other sections, scrolls to #contact
+```
+
+## Page order
+
+Hero (stage before/after) → Recent work → On site now → Services → Two ways to work → Promises →
+Contact → Location → Footer.
+
+## How the contact form reaches WhatsApp
+
+The env var `WHATSAPP_PROVIDER` decides the route (see `.env.example` and `README.md`):
+
+- **`callmebot`:** free; sends to the owner's own WhatsApp. This is the recommended option.
+- **`cloud`:** Meta WhatsApp Cloud API. Business-initiated messages need an approved template with one
+  `{{1}}` variable, which receives the single-line form of the enquiry.
+- **Empty or not configured:** the API returns `fallbackUrl`, a wa.me link with the enquiry already
+  written, and the client shows a "Send on WhatsApp" button.
+- **Provider fails:** the API returns 502 with the same fallback link, so no enquiry is lost.
+
+## Photos (`public/images/`)
+
+- **`stage-before` / `stage-after`:** two photos aligned to each other (the before photo shifted
+  +53px, −45px), then cropped to the same frame. If either is replaced, re-align it or the slider will
+  jump.
+- **`repaint-*`, `ablution-*`, `slab-*`:** cut from side-by-side collages the owner sent.
+- **`waterproof-1/2/3`:** three panels from one collage. `waterproof-1` is currently unused.
+- **`reno-exterior`:** the house number and the scooter's number plate are blurred on purpose. Keep
+  them blurred.
+- One near-duplicate interior photo was left out of the gallery.
+
+## Design rules to keep
+
+- Springs with no bounce by default (`bounce: 0`). Allow a little bounce only after a flick that
+  carried momentum.
+- Start every animation from the value currently on screen (`x.stop()` / `pos.stop()` on pointer
+  down), so a moving element can be grabbed mid-flight.
+- Give feedback on pointer down, not on release (`:active` scale 0.97).
+- Wait for about 10px of movement before committing to a direction, and use `touch-action: pan-y` so
+  pages still scroll vertically on phones.
+- Use only one orchestrated load animation (the hero). Don't add fade-in animations to each section.
+  The hero tells the slogan: "You have a problem?" over the before photo, then "We have a solution." as
+  the divider sweeps to the after photo. Its timeline is the `T` object in `Hero.tsx`.
+- On one-column layouts the hero photo sits right under the slogan (`.hero__copy { display: contents }`)
+  so the reveal plays on screen.
+- Honour reduced motion, reduced transparency and increased contrast. The media queries are at the end
+  of `globals.css`.
+- Write copy in plain sentence case, with no all-caps labels.
+
+## Contact form
+
+- The audience is mostly middle-aged men, so the form is deliberately short: only name and mobile number
+  are required. Work type is four big buttons, and the note is optional. Fields and text are large.
+- **Testing:** set `NEXT_PUBLIC_ENQUIRY_WHATSAPP` in `.env.local` to send form enquiries to another
+  WhatsApp number without changing the numbers on the page. It is empty now, so enquiries go to 0332 1788788.
+- The rate limit (5 per 10 minutes per IP) is off in development.
+
+## Open items
+
+- Office: Shop No. 14–15, First Floor, Cantonment Plaza No. 2, Jamia Masjid Road, Sialkot Cantt. The map
+  searches "Cantonment Plaza, Jamia Masjid Road, Sialkot Cantt" (`office.mapQuery`). The pin has not been
+  checked by eye; a dropped-pin link or coordinates from the owner would make it exact.
+
+- Confirm the work captions with the owner. For example: is the two-storey building an office or a
+  school? Is "cantonment gate" the right description for the road job?
+- Set `NEXT_PUBLIC_SITE_URL` once a domain exists.
+- Possible next steps: deploy to Vercel, add an Urdu version, add more projects to `recentWork`.
+
+## Commands
+
+```bash
+npm install
+cp .env.example .env.local
+npm run dev     # http://localhost:3000
+npm run build && npm start
+```
