@@ -8,7 +8,7 @@ import { PhoneIcon } from "./Icons";
 import ThemeToggle from "./ThemeToggle";
 
 const links = [
-  { href: "#work", label: "Recent work" },
+  { href: "#work", label: "Our work" },
   { href: "#on-site", label: "On site" },
   { href: "#services", label: "Services" },
   { href: "#contact", label: "Contact" },

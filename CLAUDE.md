@@ -57,7 +57,9 @@ components/Hero.tsx          big logo, slogan, blueprint background, stats, and 
                              (the nav logo stays hidden while the hero logo, #hero-logo, is in view)
 components/BeforeAfter.tsx   drag, flick or tap slider with rubber-banding; keyboard accessible (role="slider");
                              `introDelay` plays the hero reveal (full before → after → middle)
-components/WorkCarousel.tsx  "Recent work" carousel: momentum projection, rubber-band edges, per-card view toggle
+components/WorkGrid.tsx      "Our work": one titled grid per category (#work-<id>), each revealed card by
+                             card on first scroll into view; cards keep the before/after toggle;
+                             empty categories show a slim "Photos coming soon." row
 components/OnSite.tsx        house renovation gallery; lightbox grows from the tile (layoutId), portalled to body
 components/Services.tsx      grouped inset lists
 components/Engagement.tsx    Lump sum / Labour rate segmented control
@@ -73,7 +75,7 @@ lib/prefill.ts    prefillEnquiry(): adds a suggested note to the form from other
 
 ## Page order
 
-Hero (stage before/after) → Recent work → On site now → Services → Two ways to work → Promises →
+Hero (stage before/after) → Our work → On site now → Services → Two ways to work → Promises →
 Contact → Location → Footer.
 
 ## How the contact form reaches WhatsApp
@@ -88,10 +90,51 @@ called by the form. They remain in case automatic delivery is wanted later; see 
 
 ## Photos (`public/images/`)
 
+- **Adding work:** put the photos in `public/images/`, then add an entry to `work` in `lib/content.ts`
+  with a `category` from `workCategories` and one or more `views` (each view is a labelled photo, such as
+  Before and After). The grid picks it up automatically. If the photos are from different sites rather
+  than stages of one job, set `gallery: true`: the card steps through them (‹ 2 / 6 ›) instead of showing a
+  Before/After toggle, so unrelated places are never presented as a before and after.
+- **`roads/`:** 19 asphalt photos from different sites, grouped by stage into three gallery cards:
+  `laying-1..8` (laying-8 is the old cantonment-gate photo), `rolling-1..5`, `finished-1..6`. The owner
+  sent them unlabelled; the stage grouping was judged from the photos.
+- **`pcc/`:** one forecourt job in front of a row of shops. `stage-ground/base/concrete` are one photo per
+  stage for the stage toggle; `job-1..8` are the rest, in job order, for a gallery card.
+- **`paint/`:** `house-before/after` (same house front: patched plaster, then painted) and
+  `door-polishing/finished` (same door) are true pairs; `classrooms-1..6` are a gallery because the
+  in-progress and finished rooms could not be matched. Two near-duplicate house photos were left out.
+- **`ceiling/`:** 18 photos from several houses, no true pairs, so four gallery cards: `borders-1..4`
+  (one job, in order), `medallion-1/2`, `false-1..5`, `walls-1..7` (wall mouldings and panels the owner
+  filed under ceiling design; could move to Panelling). Black bars and WhatsApp screen edges were cropped.
+- **`media-wall/`:** `marble-fitting/detail/finished` (one lounge, stage toggle), `fluted-1/2` (split
+  from one side-by-side collage), and `designs-1..5`. designs-1..3 are cropped from screenshots of
+  Facebook/Instagram posts (the app UI and account names were cropped out) and designs-4/5 look like
+  renders; the owner asked for them to be used anyway. If originals of the owner's own jobs arrive,
+  prefer those.
+- **`roof/`:** `membrane-1..4` (bare roof, primer, torch-on rolls; may be more than one roof, so a
+  gallery) and `bitumen-coat` (a single photo of a hot bitumen coat).
+- **`tile/`:** `floor-1..4`, `marble-1..3`, `stairs-1/2`, `wall-1..4`, `roof-tiles` (Tilework section,
+  five cards). Three near-identical shots taken seconds apart were left out.
+- **`wood/`:** `doors-1/2`, `bookcase-workshop/installed` (paired by the matching cube layout; confirm
+  with the owner), `storage-1/2` (storage-2 looks like a render).
+- **`construction/`:** `building-1..4` (new three-storey build), `walls-1..6` (opening up and rebuilding
+  walls), `kitchen-1..4` (strip-out, then the rebuilt kitchen; kitchen-4 matched by eye).
+- **`askari-162/`:** Askari 2, House #162. The owner requires these cards (`exterior-1..4`,
+  `openings-1..5`, `interior-1..3`), now led by a Before / Final design card. `elevation-design` is a 3D
+  render of the planned front, so it is labelled "Final design", not "After"; swap in a real photo once
+  the elevation is built to stay first in the Construction section. The house is named
+  publicly at the owner's request, and exterior-4 shows the "162" plate unblurred. It may be the same
+  house as the "On site now" gallery, whose `reno-exterior` photo has the number blurred.
+- **`tuff-tile/`:** `relaying-1/2`, the same roadside junction from two angles, mid-job; a gallery card.
+- **Categories (page order):** Roads, Woodwork, Tilework, Roof treatment, Media wall, Paint work, Ceiling
+  design, LCD walls, Panelling, Plumbing, Tuff tile, PCC, Footpath, Steel work, Construction. Roads, Roof
+  treatment, Woodwork, Tilework, Media wall, Paint work, Ceiling design, Tuff tile, PCC and Construction have photos; the owner is sending the rest.
+
 - **`stage-before` / `stage-after`:** two photos aligned to each other (the before photo shifted
   +53px, −45px), then cropped to the same frame. If either is replaced, re-align it or the slider will
   jump.
-- **`repaint-*`, `ablution-*`, `slab-*`:** cut from side-by-side collages the owner sent.
+- **`repaint-*`, `filtration-plant-*`, `slab-*`:** cut from side-by-side collages the owner sent. The
+  filtration plant card was first captioned an ablution area; the owner corrected it.
 - **`waterproof-1/2/3`:** three panels from one collage. `waterproof-1` is currently unused.
 - **`reno-exterior`:** the house number and the scooter's number plate are blurred on purpose. Keep
   them blurred.
@@ -106,7 +149,8 @@ called by the form. They remain in case automatic delivery is wanted later; see 
 - Give feedback on pointer down, not on release (`:active` scale 0.97).
 - Wait for about 10px of movement before committing to a direction, and use `touch-action: pan-y` so
   pages still scroll vertically on phones.
-- Use only one orchestrated load animation (the hero). Don't add fade-in animations to each section.
+- Use only one orchestrated load animation (the hero). Don't add fade-in animations to other sections;
+  the one exception, at the owner's request, is the "Our work" grids, which rise in once on scroll.
   The hero tells the slogan: "You have a problem?" over the before photo, then "We have a solution." as
   the divider sweeps to the after photo. Its timeline is the `T` object in `Hero.tsx`.
 - On one-column layouts the hero photo sits right under the slogan (`.hero__copy { display: contents }`)

@@ -1,6 +1,6 @@
 import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
-import WorkCarousel from "@/components/WorkCarousel";
+import WorkGrid from "@/components/WorkGrid";
 import OnSite from "@/components/OnSite";
 import Services from "@/components/Services";
 import Engagement from "@/components/Engagement";
@@ -15,7 +15,7 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <WorkCarousel />
+        <WorkGrid />
         <OnSite />
         <Services />
         <Engagement />
