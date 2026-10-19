@@ -334,6 +334,17 @@ export const work: WorkItem[] = [
     ]),
   },
   {
+    id: "plumbing-drains",
+    category: "plumbing",
+    title: "New drainage pipework",
+    summary: "Old floors opened up and new PVC drain and supply lines laid in channels, ready to be covered.",
+    gallery: true,
+    views: photos("plumbing", "pipes", [
+      ["New PVC drain pipes and fittings laid in an opened-up bathroom floor", 720, 1280],
+      ["Two new PVC pipes laid in a channel cut through a concrete floor", 720, 1280],
+    ]),
+  },
+  {
     id: "tuff-tile-junction",
     category: "tuff-tile",
     title: "Relaying tuff tile at a roadside junction",
@@ -380,6 +391,36 @@ export const work: WorkItem[] = [
     views: [
       { label: "Before", src: "/images/filtration-plant-before.jpg", alt: "Water filtration plant with a broken concrete step over an open drain", width: 1148, height: 760 },
       { label: "After", src: "/images/filtration-plant-after.jpg", alt: "New concrete floor and steps in front of the water filtration plant taps, taped off to cure", width: 1148, height: 760 },
+    ],
+  },
+  {
+    id: "steel-canopy",
+    category: "steel-work",
+    title: "Steel lattice canopy",
+    summary: "A steel frame welded together on the roof, raised into place and finished with a patterned panel ceiling.",
+    gallery: true,
+    views: photos("steel", "canopy", [
+      ["A welded steel lattice frame laid out on a rooftop", 720, 1280],
+      ["Workers welding the steel lattice frame on the roof", 780, 1040],
+      ["The finished canopy from below, steel lattice over patterned ceiling panels", 1280, 1280],
+    ]),
+  },
+  {
+    id: "steel-pergola",
+    category: "steel-work",
+    title: "Steel pergola with decorative columns",
+    summary: "Lattice steel columns and a patterned frame welded on site over a terrace.",
+    views: [
+      { label: "Welding", src: "/images/steel/pergola.jpg", alt: "A welder in a mask joining the top of a decorative steel pergola over a terrace", width: 720, height: 1450 },
+    ],
+  },
+  {
+    id: "steel-benches",
+    category: "steel-work",
+    title: "Steel-framed benches",
+    summary: "Rows of steel-framed benches made for an outdoor seating area.",
+    views: [
+      { label: "Benches", src: "/images/steel/benches.jpg", alt: "Rows of new steel-framed benches with curved grey seats on a lawn", width: 720, height: 1280 },
     ],
   },
   {

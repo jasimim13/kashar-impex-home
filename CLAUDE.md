@@ -125,10 +125,13 @@ called by the form. They remain in case automatic delivery is wanted later; see 
   the elevation is built to stay first in the Construction section. The house is named
   publicly at the owner's request, and exterior-4 shows the "162" plate unblurred. It may be the same
   house as the "On site now" gallery, whose `reno-exterior` photo has the number blurred.
+- **`steel/`:** `canopy-1..3` (one rooftop canopy, frame to finished), `pergola` (cropped out of a phone
+  screenshot), `benches`.
+- **`plumbing/`:** `pipes-1/2`, new PVC pipework in opened-up floors; one gallery card.
 - **`tuff-tile/`:** `relaying-1/2`, the same roadside junction from two angles, mid-job; a gallery card.
 - **Categories (page order):** Roads, Woodwork, Tilework, Roof treatment, Media wall, Paint work, Ceiling
   design, LCD walls, Panelling, Plumbing, Tuff tile, PCC, Footpath, Steel work, Construction. Roads, Roof
-  treatment, Woodwork, Tilework, Media wall, Paint work, Ceiling design, Tuff tile, PCC and Construction have photos; the owner is sending the rest.
+  treatment, Woodwork, Tilework, Media wall, Paint work, Ceiling design, Plumbing, Tuff tile, PCC, Steel work and Construction have photos; the owner is sending the rest.
 
 - **`stage-before` / `stage-after`:** two photos aligned to each other (the before photo shifted
   +53px, −45px), then cropped to the same frame. If either is replaced, re-align it or the slider will
