@@ -483,19 +483,6 @@ export const work: WorkItem[] = [
     ],
   },
   {
-    id: "construction-building",
-    category: "construction",
-    title: "New three-storey building",
-    summary: "From the first walls on a cleared plot, through the propped slabs and brick structure, to the plastered shell.",
-    gallery: true,
-    views: photos("construction", "building", [
-      ["The first walls rising on a cleared plot, with rubble still to clear", 1280, 960],
-      ["Steel props holding up a freshly cast slab overnight", 720, 1280],
-      ["A three-storey brick structure with balconies, still under construction", 1280, 960],
-      ["The three-storey building with its frame plastered and box balconies formed", 1280, 960],
-    ]),
-  },
-  {
     id: "construction-walls",
     category: "construction",
     title: "Opening up and rebuilding walls",
@@ -569,7 +556,6 @@ export const work: WorkItem[] = [
       ["A patch of loose asphalt at a road junction, with a motorcyclist passing", 1204, 1600],
       ["A narrow strip of fresh asphalt beside a stop barrier, with a roller waiting behind", 1204, 1600],
       ["Fresh asphalt laid along one side of a residential road lined with villas and palms", 1200, 1600],
-      ["Workers laying asphalt behind a work in progress sign at a cantonment gate", 960, 1280],
     ]),
   },
   {

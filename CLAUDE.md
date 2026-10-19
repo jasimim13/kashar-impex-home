@@ -96,7 +96,7 @@ called by the form. They remain in case automatic delivery is wanted later; see 
   than stages of one job, set `gallery: true`: the card steps through them (‹ 2 / 6 ›) instead of showing a
   Before/After toggle, so unrelated places are never presented as a before and after.
 - **`roads/`:** 19 asphalt photos from different sites, grouped by stage into three gallery cards:
-  `laying-1..8` (laying-8 is the old cantonment-gate photo), `rolling-1..5`, `finished-1..6`. The owner
+  `laying-1..7`, `rolling-1..5`, `finished-1..6`. The owner
   sent them unlabelled; the stage grouping was judged from the photos.
 - **`pcc/`:** one forecourt job in front of a row of shops. `stage-ground/base/concrete` are one photo per
   stage for the stage toggle; `job-1..8` are the rest, in job order, for a gallery card.
@@ -117,7 +117,8 @@ called by the form. They remain in case automatic delivery is wanted later; see 
   five cards). Three near-identical shots taken seconds apart were left out.
 - **`wood/`:** `doors-1/2`, `bookcase-workshop/installed` (paired by the matching cube layout; confirm
   with the owner), `storage-1/2` (storage-2 looks like a render).
-- **`construction/`:** `building-1..4` (new three-storey build), `walls-1..6` (opening up and rebuilding
+- **`construction/`:** `building-1..4` (new three-storey build; its card was removed at the owner's
+  request to be added back later, so these files are currently unused), `walls-1..6` (opening up and rebuilding
   walls), `kitchen-1..4` (strip-out, then the rebuilt kitchen; kitchen-4 matched by eye).
 - **`askari-162/`:** Askari 2, House #162. The owner requires these cards (`exterior-1..4`,
   `openings-1..5`, `interior-1..3`), now led by a Before / Final design card. `elevation-design` is a 3D
@@ -176,7 +177,7 @@ called by the form. They remain in case automatic delivery is wanted later; see 
   checked by eye; a dropped-pin link or coordinates from the owner would make it exact.
 
 - Confirm the work captions with the owner. For example: is the two-storey building an office or a
-  school? Is "cantonment gate" the right description for the road job?
+  school? The cantonment-gate road photo was removed at the owner's request (it showed an army post).
 - Set `NEXT_PUBLIC_SITE_URL` once a domain exists.
 - Possible next steps: deploy to Vercel, add an Urdu version, add more projects to `recentWork`.
 
