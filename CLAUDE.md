@@ -115,7 +115,7 @@ called by the form. They remain in case automatic delivery is wanted later; see 
   gallery) and `bitumen-coat` (a single photo of a hot bitumen coat).
 - **`tile/`:** `floor-1..4`, `marble-1..3`, `stairs-1/2`, `wall-1..4`, `roof-tiles` (Tilework section,
   five cards). Three near-identical shots taken seconds apart were left out.
-- **`wood/`:** `doors-1/2`, `bookcase-workshop/installed` (paired by the matching cube layout; confirm
+- **`wood/`:** `kitchen-1..5` (fitted kitchen cabinets, mid-installation; first Woodwork card), `doors-1/2`, `bookcase-workshop/installed` (paired by the matching cube layout; confirm
   with the owner), `storage-1/2` (storage-2 looks like a render).
 - **`construction/`:** `building-1..4` (new three-storey build; its card was removed at the owner's
   request to be added back later, so these files are currently unused), `walls-1..6` (opening up and rebuilding

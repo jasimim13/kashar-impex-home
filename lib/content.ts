@@ -145,6 +145,20 @@ export const work: WorkItem[] = [
     ]),
   },
   {
+    id: "wood-kitchen",
+    category: "woodwork",
+    title: "Fitted kitchen cabinets",
+    summary: "Floor-to-ceiling kitchen units made to measure and fitted on site, with LED strips under the wall cabinets.",
+    gallery: true,
+    views: photos("wood", "kitchen", [
+      ["A narrow kitchen with new wall and base cabinets fitted, LED strips glowing under the wall units", 1200, 1600],
+      ["Two carpenters on ladders fitting the top row of kitchen cabinets", 1200, 1600],
+      ["The carpenters fixing the upper cabinets along the length of the kitchen", 1200, 1600],
+      ["Base cabinets with wire pull-out baskets and drawers, fitted under a black stone counter", 1600, 1200],
+      ["The cooker hood panel and wall units, with the protective film still on the gloss panels", 1600, 1200],
+    ]),
+  },
+  {
     id: "wood-doors",
     category: "woodwork",
     title: "Carved panel doors",
