@@ -15,6 +15,9 @@ export const business = {
 
 // Office location. Write the address as people should read it; line breaks are kept. mapQuery is what
 // Google Maps searches for: shop and floor numbers confuse it, so it names the plaza and road only.
+// The live address. NEXT_PUBLIC_SITE_URL can override it (for example on a preview deployment).
+export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.kasharhomesolutions.pk").replace(/\/$/, "");
+
 export const office = {
   address: "Shop No. 14–15, First Floor\nCantonment Plaza\nJamia Masjid Road, Sialkot Cantt",
   mapQuery: "Cantonment Plaza, Jamia Masjid Road, Sialkot Cantt",

@@ -177,8 +177,8 @@ export default function Hero() {
             <Line words={lineTwo} start={T.solution} reduce={reduce} />
           </h1>
           <motion.p className="hero__lede" {...rise(T.rest)}>
-            {business.name} plans, builds and finishes homes, bank branches, brand outlets, industrial
-            buildings and multistory projects, on lump sum or labour rate contracts.
+            {business.name}, based in Sialkot, plans, builds and finishes homes, bank branches, brand
+            outlets, industrial buildings and multistory projects, on lump sum or labour rate contracts.
           </motion.p>
           <motion.div className="hero__actions" {...rise(T.rest + 0.1)}>
             <a className="btn btn--primary" href="#contact">

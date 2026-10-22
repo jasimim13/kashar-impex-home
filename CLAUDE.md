@@ -9,6 +9,7 @@ Claude Code loads it automatically, so keep it up to date as decisions change.
   photos are from Sialkot.
 - **Main number, calls and WhatsApp:** 0332 1788788 (international form: 923321788788). Enquiries are
   delivered to this WhatsApp.
+- **Live site:** https://www.kasharhomesolutions.pk
 - **Second line, calls only (no WhatsApp):** 0300 8616788 (923008616788). Shown in the contact list and footer.
 - **Landline:** 052-4267888 (+92 52 4267888). Shown in the contact list and footer.
 - **Email:** Kashar_impex@yahoo.com
@@ -72,6 +73,19 @@ lib/enquiry.ts    Enquiry type; validation shared by client and server; message 
 lib/whatsapp.ts   providers: CallMeBot, Meta Cloud API, or none
 lib/prefill.ts    prefillEnquiry(): adds a suggested note to the form from other sections, scrolls to #contact
 ```
+
+## SEO
+
+- `app/layout.tsx`: title and description name Sialkot; canonical, Open Graph and Twitter tags.
+  `siteUrl` (in `lib/content.ts`) is the single source of the live address.
+- `app/robots.ts` and `app/sitemap.ts` serve `/robots.txt` and `/sitemap.xml`.
+- `components/StructuredData.tsx`: schema.org `GeneralContractor` JSON-LD (name, phones, email, address,
+  services). Only confirmed facts; add opening hours and map coordinates once the owner gives them.
+- `public/logo.png` (512px, used by the JSON-LD) and `app/apple-icon.png` are resized from
+  `brand/kashar-whatsapp.png`.
+- Google Search Console: verified as a Domain property through a `google-site-verification` TXT record
+  in Vercel DNS. Never delete that record, or verification is lost.
+- Still to do by the owner: submit the sitemap in Search Console, and create a Google Business Profile.
 
 ## Page order
 

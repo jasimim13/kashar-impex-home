@@ -8,10 +8,12 @@ import Promises from "@/components/Promises";
 import ContactForm from "@/components/ContactForm";
 import Location from "@/components/Location";
 import Footer from "@/components/Footer";
+import StructuredData from "@/components/StructuredData";
 
 export default function Home() {
   return (
     <>
+      <StructuredData />
       <Nav />
       <main>
         <Hero />
