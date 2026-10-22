@@ -7,7 +7,7 @@ import "./globals.css";
 const jakarta = Plus_Jakarta_Sans({ subsets: ["latin"], variable: "--font-jakarta", display: "swap" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://www.kasharhomesolutions.pk"),
   title: "Kashar Home Solutions | Construction and renovation",
   description:
     "Construction and renovation for homes, bank branches, brand outlets, industrial buildings and multistory projects. Lump sum or labour rate contracts. Call or WhatsApp 0332 1788788.",

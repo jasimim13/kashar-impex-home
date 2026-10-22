@@ -178,8 +178,10 @@ called by the form. They remain in case automatic delivery is wanted later; see 
 
 - Confirm the work captions with the owner. For example: is the two-storey building an office or a
   school? The cantonment-gate road photo was removed at the owner's request (it showed an army post).
-- Set `NEXT_PUBLIC_SITE_URL` once a domain exists.
-- Possible next steps: deploy to Vercel, add an Urdu version, add more projects to `recentWork`.
+- Live at https://www.kasharhomesolutions.pk (Vercel, nameservers ns1/ns2.vercel-dns.com set at PKNIC;
+  the bare domain 308-redirects to www). `metadataBase` falls back to that address, so
+  `NEXT_PUBLIC_SITE_URL` is optional.
+- Possible next steps: Google Search Console and Google Business Profile, an Urdu version, more projects.
 
 ## Commands
 
