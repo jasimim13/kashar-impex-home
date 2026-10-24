@@ -31,11 +31,21 @@ export default function StructuredData() {
     areaServed: { "@type": "City", name: "Sialkot" },
     knowsAbout: serviceGroups.flatMap((g) => g.items),
   };
+  // Tells Google the site's name, so results show "Kashar Home Solutions" instead of the bare domain.
+  const website = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteUrl}/#website`,
+    name: business.name,
+    alternateName: ["Kashar Imp", "kasharhomesolutions.pk"],
+    url: `${siteUrl}/`,
+    publisher: { "@id": `${siteUrl}/#business` },
+  };
   return (
     <script
       type="application/ld+json"
       // JSON.stringify output is safe here: every value is our own constant text.
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }}
+      dangerouslySetInnerHTML={{ __html: JSON.stringify([website, data]) }}
     />
   );
 }

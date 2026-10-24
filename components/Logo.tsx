@@ -12,7 +12,7 @@ export default function Logo({ compact = false, className }: Props) {
         <span className="logo__type">
           <span className="logo__name">
             Kashar <span className="logo__imp">Imp</span>
-          </span>
+          </span>{" "}
           <span className="logo__sub">Home Solutions</span>
         </span>
       )}

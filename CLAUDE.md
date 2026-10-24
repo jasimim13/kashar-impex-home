@@ -83,9 +83,13 @@ lib/prefill.ts    prefillEnquiry(): adds a suggested note to the form from other
   services). Only confirmed facts; add opening hours and map coordinates once the owner gives them.
 - `public/logo.png` (512px, used by the JSON-LD) and `app/apple-icon.png` are resized from
   `brand/kashar-whatsapp.png`.
+- Search result appearance: the `WebSite` JSON-LD gives Google the site name; `app/favicon.ico` (48px)
+  and `app/icon.png` (192px) are rendered from `app/icon.svg` (house only; the wordmark is unreadable at
+  favicon size). Labels and values that sit on separate lines visually have a real space between them
+  (`{" "}`) so search snippets don't run words together.
 - Google Search Console: verified as a Domain property through a `google-site-verification` TXT record
   in Vercel DNS. Never delete that record, or verification is lost.
-- Still to do by the owner: submit the sitemap in Search Console, and create a Google Business Profile.
+- Sitemap submitted in Search Console (Success). Still to do by the owner: a Google Business Profile.
 
 ## Page order
 

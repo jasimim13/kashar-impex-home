@@ -96,7 +96,7 @@ export default function ContactForm() {
             <a href={business.phoneHref}>
               <PhoneIcon className="contact__icon" />
               <span>
-                <strong>Call</strong>
+                <strong>Call</strong>{" "}
                 {business.phoneDisplay}
               </span>
             </a>
@@ -105,7 +105,7 @@ export default function ContactForm() {
             <a href={whatsappLink()} target="_blank" rel="noopener noreferrer">
               <WhatsAppIcon className="contact__icon" />
               <span>
-                <strong>WhatsApp</strong>
+                <strong>WhatsApp</strong>{" "}
                 {business.phoneDisplay}
               </span>
             </a>
@@ -114,7 +114,7 @@ export default function ContactForm() {
             <a href={business.secondPhoneHref}>
               <PhoneIcon className="contact__icon" />
               <span>
-                <strong>Calls only, no WhatsApp</strong>
+                <strong>Calls only, no WhatsApp</strong>{" "}
                 {business.secondPhoneDisplay}
               </span>
             </a>
@@ -123,7 +123,7 @@ export default function ContactForm() {
             <a href={business.landlineHref}>
               <PhoneIcon className="contact__icon" />
               <span>
-                <strong>Landline</strong>
+                <strong>Landline</strong>{" "}
                 {business.landlineDisplay}
               </span>
             </a>
@@ -132,7 +132,7 @@ export default function ContactForm() {
             <a href={`mailto:${business.email}`}>
               <MailIcon className="contact__icon" />
               <span>
-                <strong>Email</strong>
+                <strong>Email</strong>{" "}
                 {business.email}
               </span>
             </a>

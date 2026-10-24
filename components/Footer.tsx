@@ -15,7 +15,7 @@ export default function Footer() {
             <a href={whatsappLink()} target="_blank" rel="noopener noreferrer">
               <WhatsAppIcon className="footer__icon footer__icon--whatsapp" />
               <span>
-                <strong>{business.phoneDisplay}</strong>
+                <strong>{business.phoneDisplay}</strong>{" "}
                 <small>WhatsApp and calls</small>
               </span>
             </a>
@@ -24,7 +24,7 @@ export default function Footer() {
             <a href={business.secondPhoneHref}>
               <PhoneIcon className="footer__icon" />
               <span>
-                <strong>{business.secondPhoneDisplay}</strong>
+                <strong>{business.secondPhoneDisplay}</strong>{" "}
                 <small>Calls only, no WhatsApp</small>
               </span>
             </a>
@@ -33,7 +33,7 @@ export default function Footer() {
             <a href={business.landlineHref}>
               <PhoneIcon className="footer__icon" />
               <span>
-                <strong>{business.landlineDisplay}</strong>
+                <strong>{business.landlineDisplay}</strong>{" "}
                 <small>Landline</small>
               </span>
             </a>
@@ -42,7 +42,7 @@ export default function Footer() {
             <a href={`mailto:${business.email}`}>
               <MailIcon className="footer__icon" />
               <span>
-                <strong>{business.email}</strong>
+                <strong>{business.email}</strong>{" "}
                 <small>Email</small>
               </span>
             </a>
